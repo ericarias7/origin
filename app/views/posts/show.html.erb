@@ -1,0 +1,31 @@
+<div class = "text-center", color: #FFFFFF> 
+  <h3> Photo </h3>
+</div>
+<div class="posts-wrapper row">
+  <div class="post">
+    <div class="post-head">
+      <div class="name">
+        <%= @post.user.user_name %> 
+      </div>
+    </div>
+    <div class="image center-block">
+      <%= image_tag @post.image.url, size: "650x550" %>
+    </div>
+    <p class="caption">
+      <%= @post.caption %>
+    </p>
+   
+      <% if @post.user.id == current_user.id %>  
+        <div class="text-center edit-links">
+           <%= link_to "Cancel", posts_path %>
+            |
+          <%= link_to "Edit Post", edit_post_path(@post) %>
+        </div>
+      <% else %> 
+       <div class="text-center edit-links">
+          <%= link_to "Cancel", posts_path %>
+      <% end %> 
+       </div>
+  </div>
+</div>
+
